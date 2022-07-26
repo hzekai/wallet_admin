@@ -1,55 +1,37 @@
-@extends('layouts.tri')
 
-@section('body')
-    @include('books.parts.list', ['books' => $books, 'view' => $view])
-@stop
 
-@section('left')
-    @if($recents)
-        <div id="recents" class="mb-xl">
-            <h5>{{ trans('entities.recently_viewed') }}</h5>
-            @include('entities.list', ['entities' => $recents, 'style' => 'compact'])
-        </div>
-    @endif
 
-    <div id="popular" class="mb-xl">
-        <h5>{{ trans('entities.books_popular') }}</h5>
-        @if(count($popular) > 0)
-            @include('entities.list', ['entities' => $popular, 'style' => 'compact'])
-        @else
-            <div class="body text-muted">{{ trans('entities.books_popular_empty') }}</div>
-        @endif
-    </div>
+<x-guest-layout>
+<x-auth-card>
+    <x-slot name="logo">
 
-    <div id="new" class="mb-xl">
-        <h5>{{ trans('entities.books_new') }}</h5>
-        @if(count($popular) > 0)
-            @include('entities.list', ['entities' => $new, 'style' => 'compact'])
-        @else
-            <div class="body text-muted">{{ trans('entities.books_new_empty') }}</div>
-        @endif
-    </div>
-@stop
-
-@section('right')
-
-    <div class="actions mb-xl">
-        <h5>{{ trans('common.actions') }}</h5>
-        <div class="icon-list text-primary">
-            @if(user()->can('book-create-all'))
-                <a href="{{ url("/create-book") }}" class="icon-list-item">
-                    <span>@icon('add')</span>
-                    <span>{{ trans('entities.books_create') }}</span>
-                </a>
-            @endif
-
-            @include('entities.view-toggle', ['view' => $view, 'type' => 'books'])
-
-            <a href="{{ url('/tags') }}" class="icon-list-item">
-                <span>@icon('tag')</span>
-                <span>{{ trans('entities.tags_view_tags') }}</span>
-            </a>
+    </x-slot>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <!-- Validation Errors -->
+    <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">话题</div>
+                    <div class="panel-body">
+                        <ul>
+                        @foreach($books as $topic)
+                            <li>
+                                <div>
+                                <a href="/notice/{{ $topic->id }}">
+                                    <h4>{{ $topic->title }}</h4>
+                                </a>
+                                </div>
+                                <div class="body">{{ $topic->content }}</div>
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-@stop
+</x-auth-card>
+</x-guest-layout>

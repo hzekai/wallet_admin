@@ -16,13 +16,13 @@ Cookie: {{cookie}}
 ###
 
 
-PUT {{api_host}}/api/notice/10
+PUT {{api_host}}/api/notice/15
 Content-Type: application/json
 Cookie: {{cookie}}
 
 {
-   "title": "12345aaaaa",
-   "content": "12122aaaaaaa222",
+   "title": "sevice ntice",
+   "content": "service stop ntice",
    "is_publish": 0,
    "category_id": 1
 }

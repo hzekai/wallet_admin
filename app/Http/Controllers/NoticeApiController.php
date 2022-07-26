@@ -81,7 +81,7 @@ class NoticeApiController extends Controller
             $notice = $notice->orderBy('id');
         }
 
-        $notice = $notice->simplePaginate($pageSize)->withQueryString();
+        $notice = $notice->paginate($pageSize)->withQueryString();
 
         return response()->json(['data' => $notice->toArray(), "code" => 0, "message" => "success"]);
     }

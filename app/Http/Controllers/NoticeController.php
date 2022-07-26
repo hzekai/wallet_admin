@@ -31,7 +31,6 @@ class NoticeController extends Controller
 
     protected function validator(array $data, $key)
     {
-        Log::info("2222222222");
         return Validator::make($data, $this->rules()[$key]);
     }
 
@@ -81,9 +80,9 @@ class NoticeController extends Controller
             $notice = $notice->orderBy('id');
         }
 
-        $notice = $notice->simplePaginate($pageSize)->withQueryString();
-
-        return response()->json(['data' => $notice->toArray(), "code" => 0, "message" => "success"]);
+        $notices = $notice->paginate($pageSize)->withQueryString();
+        var_dump(compact('notices'));
+        return view('notices.cc', compact('notices'));
     }
 
 
