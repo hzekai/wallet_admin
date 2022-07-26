@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('notice', [NoticeController::class, 'index']);
+Route::post('notice', [NoticeController::class, 'create']);
+Route::put('notice/{id}', [NoticeController::class, "update"]);
+Route::delete('notice/{id}', [NoticeController::class, 'delete']);
+
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

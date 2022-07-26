@@ -1,0 +1,53 @@
+@api_host = http://localhost:8888
+@cookie = XSRF-TOKEN=eyJpdiI6IjU0ZmFId3IyY0xUZzE5cDVqbUtaQ3c9PSIsInZhbHVlIjoiN2JGZTZhOFZIZW9Kb2RsZHlxTVhtWE4rcU9ibkZqRHFTVEpjbGNDQVlYeDFuTDZxQjYrR0F5SCtkVWFkMmtLMzVoSFRRVEpYR3BRZTFQTEZLZ284dit3MkFQeWlyTGlsMkluU0tqSzZTUnRpK2FDSFlkNDJtYnRTUmZ6Z0FjSmkiLCJtYWMiOiIwZTMzYWUyZjM3MDVjMzI3NDQ3YzAyM2Q4Y2UzMTRlZGI0MjMyNTRjODUyYjg3ZGE3YzI5NjM3M2RhMmM4NmQwIiwidGFnIjoiIn0%3D; wallet_admin_session=eyJpdiI6InNPODhqcEw3WEpRanVzTW1iOFRCaHc9PSIsInZhbHVlIjoiZC94MklsczhxTUs1TWlaaHFGR05WQm9CQ2JERmFPNnFnOHZCWCthVGtadUlsOFY0enpRMGRwakxxTndhRllvVWkrVWJvZzdQYjFkUHZzUVVxQW92ZHBHRWFXN2FtYk5qQUxqdCt2YXRpandmOG81NUVrUVl4SDhYek85QmNhbysiLCJtYWMiOiJhZmJmMzNhZDQyYWYzMmFkMTk1MjUyYTMxOTY2OWMzODYzMGQ4OWM1YmI2NmJkYjZlMWU2OTVhMDExY2IzYTMyIiwidGFnIjoiIn0%3D; remember_web_59ba36addc2b2f9401580f014c7f58ea4e30989d=eyJpdiI6Imd2UENrR2FpODVPemJDcnpjWjRxQkE9PSIsInZhbHVlIjoidkZkWk1UYkwzVnJOcFNYQ21WcTVLbWpRZ0hqUklNdnBPSkNaT1kwdXlSMjhuak1YRjRsUW1RWWNtQWhheU5DY3d6eXBTNVJGendhK3dWTU5aSlVHTFVxQnJweEpMVUZ3SzdPYWNmeGpkY2dZQVNYczlkdHJVT0JYNGV4a0Z6WXErMzJYdzhhZXpiN1pGTExqVjRMMVloVWFJZzlCckhNdnpEOUNEQzUwTy9aWElkTlp4bGxWWStwY1RmTnBoZHBES1QxaUxCL0lSeHJ3THlaUm14b3IybGY4RitiNFI3ZksxTi9lL2ZUa09Dcz0iLCJtYWMiOiJlNzkxYTBjMDI2MjZkMmM3OTFkNzU2ODBiM2I5OWY0NzhhN2RhZDI4Zjc5NmNmZDI1ZTYzNmNiZWRjZjgyM2JjIiwidGFnIjoiIn0%3D
+
+
+
+POST {{api_host}}/api/notice
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+    "content": "Asia",
+    "category_id": 5,
+    "title": "test",
+    "created_by": 1
+}
+###
+
+
+PUT {{api_host}}/api/notice/10
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+   "title": "12345aaaaa",
+   "content": "12122aaaaaaa222",
+   "is_publish": 0,
+   "category_id": 1
+}
+###
+
+
+GET {{api_host}}/api/notice
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+    //"type": "content",
+
+    "page": 1,
+    "pageSize": 2
+}
+###
+
+
+delete {{api_host}}/api/notice/10
+Content-Type: application/json
+Cookie: {{cookie}}
+
+{
+
+}
+###
+

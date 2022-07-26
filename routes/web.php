@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::get('notice', [NoticeController::class, 'index']);
+Route::post('notice', [NoticeController::class, 'create']);
+Route::put('notice/{id}', [NoticeController::class, "update"]);
+Route::delete('notice/{id}', [NoticeController::class, 'delete']);
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
