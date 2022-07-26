@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\NoticeApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +15,10 @@ use App\Http\Controllers\NoticeController;
 |
 */
 
-Route::get('notice', [NoticeController::class, 'index']);
-Route::post('notice', [NoticeController::class, 'create']);
-Route::put('notice/{id}', [NoticeController::class, "update"]);
-Route::delete('notice/{id}', [NoticeController::class, 'delete']);
+Route::get('notice', [NoticeApiController::class, 'index']);
+Route::post('notice', [NoticeApiController::class, 'create']);
+Route::put('notice/{id}', [NoticeApiController::class, "update"]);
+Route::delete('notice/{id}', [NoticeApiController::class, 'delete']);
 
 
 
